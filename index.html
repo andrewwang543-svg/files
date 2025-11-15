@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>文本解析页面</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; }
+        .container { background: #f5f5f5; padding: 2rem; border-radius: 8px; }
+        h1 { color: #2c3e50; text-align: center; }
+        #textContent { color: #34495e; font-size: 1.1rem; }
+        .tip { color: #7f8c8d; text-align: center; margin-top: 2rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>解析后的文本</h1>
+        <div id="textContent">加载中...</div>
+    </div>
+    <div class="tip">URL格式：你的GitHub Pages地址/?text=编码后的文本</div>
+
+    <script>
+        // 从URL中获取编码后的文本并解码
+        function getDecodedText() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const encodedText = urlParams.get('text');
+            if (!encodedText) return '未检测到文本，请检查URL是否正确（需包含 ?text=编码后的内容）';
+            // 解码URL编码的文本（支持中文、特殊符号）
+            return decodeURIComponent(encodedText);
+        }
+
+        // 显示解码后的文本
+        document.getElementById('textContent').textContent = getDecodedText();
+    </script>
+</body>
+</html>
