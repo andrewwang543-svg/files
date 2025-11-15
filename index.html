@@ -2,60 +2,14 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>多文本专属URL页面</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; line-height: 1.8; }
-        .container { background: #f5f5f5; padding: 2.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 1rem; }
-        #textContent { color: #2d3436; font-size: 1.15rem; margin: 1.5rem 0; }
-        .tip { color: #7f8c8d; text-align: center; margin-top: 2rem; font-size: 0.95rem; }
-        .error { color: #e74c3c; text-align: center; font-size: 1.1rem; }
-    </style>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>可解析的文本数据示例</title>
+   
 <body>
+
     <div class="container">
-        <h1>专属文本展示</h1>
-        <div id="textContent" class="error">加载中...</div>
+        <p>帮我生成一张高分辨率的纪实风格照片。环境： 黄昏时分的中国农村，在一个村委会（党群服务中心）的建筑外 。背景的墙上挂着一条红底白字的横幅 。主体： 一个戴眼镜的二十出头的年轻女性（小杨），胸前佩戴着一枚小而清晰的红色党徽 。她坐在一张简朴的木制茶桌旁，桌上放着茶具 。动作： 她正平静地从茶壶中倒茶，神情专注而温和，正对着面前三脚架上的手机和环形灯直播。背景： 在她身后的建筑台阶上，坐着几位当地的茶农，他们正安静地看着她直播，表情中带着希望和自豪 。光线与氛围： 环形灯的暖光照亮了她和茶具，而背景则是黄昏时分的柔和冷光。整个画面的氛围是真诚的、宁静的，充满了社区的希望感。</p>
     </div>
-    <div class="tip">URL格式：你的GitHub Pages地址/?id=文本关键词（如 ?id=intro）</div>
 
-    <script>
-        // --------------------------
-        // 多段文本配置区：在这里添加/修改你的文本
-        // 格式：关键词: "文本内容"，每段之间用逗号分隔（最后一段不用逗号）
-        // --------------------------
-        const textList = {
-            text1: "帮我生成一张高分辨率的纪实风格照片。环境： 黄昏时分的中国农村，在一个村委会（党群服务中心）的建筑外 。背景的墙上挂着一条红底白字的横幅 。主体： 一个戴眼镜的二十出头的年轻女性（小杨），胸前佩戴着一枚小而清晰的红色党徽 。她坐在一张简朴的木制茶桌旁，桌上放着茶具 。动作： 她正平静地从茶壶中倒茶，神情专注而温和，正对着面前三脚架上的手机和环形灯直播。背景： 在她身后的建筑台阶上，坐着几位当地的茶农，他们正安静地看着她直播，表情中带着希望和自豪 。光线与氛围： 环形灯的暖光照亮了她和茶具，而背景则是黄昏时分的柔和冷光。整个画面的氛围是真诚的、宁静的，充满了社区的希望感。",
-            text2: "这是第二段文本（关键词：note1）。100字左右完全没问题，直接原样填写，不用编码。",
-            story2: "这是第三段文本（关键词：story2）。需要添加新文本时，按照上面的格式，新增一行「关键词: "文本内容"」即可。",
-            // 示例：新增第四段 → 复制下面一行，修改关键词和文本
-            // travel: "我的旅行感悟...",
-        };
-
-        // 从URL获取关键词，显示对应文本
-        function showTargetText() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const textId = urlParams.get('id'); // 获取URL中的 ?id=xxx
-            const contentElement = document.getElementById('textContent');
-
-            if (!textId) {
-                contentElement.textContent = "请在URL后添加「?id=文本关键词」访问对应文本（如 ?id=intro）";
-                return;
-            }
-
-            // 匹配关键词，显示文本（\n替换为换行标签）
-            const targetText = textList[textId];
-            if (targetText) {
-                contentElement.innerHTML = targetText.replace(/\n/g, '<br>'); // 支持换行
-                contentElement.className = ""; // 清除错误样式
-            } else {
-                contentElement.textContent = `未找到关键词「${textId}」对应的文本，请检查关键词是否正确！`;
-                contentElement.className = "error";
-            }
-        }
-
-        // 页面加载后执行
-        showTargetText();
-    </script>
 </body>
 </html>
